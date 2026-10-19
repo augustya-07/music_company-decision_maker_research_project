@@ -1,0 +1,213 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SOP01_Company_Record",
+  "description": "Normalized record for AI Company Discovery & Commercial Qualification (SOP 01 v4.0)",
+  "type": "object",
+  "required": [
+    "company_id",
+    "canonical_company_name",
+    "operating_brand",
+    "parent_company_id",
+    "official_website",
+    "canonical_domain",
+    "country",
+    "markets_served",
+    "company_business_model",
+    "projects_fit",
+    "platform_fit",
+    "primary_track",
+    "projects_category",
+    "projects_priority",
+    "platform_subtype",
+    "commercial_rank",
+    "live_event_count",
+    "live_count_window",
+    "event_proof_log",
+    "music_rights_role",
+    "catalog_proof_url",
+    "d2c_store_url",
+    "d2c_product_url",
+    "active_artist_count",
+    "artist_count_basis",
+    "roster_proof_url",
+    "observed_facts",
+    "commercial_hypothesis",
+    "buyer_interest",
+    "evidence",
+    "relationship_status",
+    "relationship_check_reference",
+    "relationship_cleared_by",
+    "relationship_cleared_on",
+    "duplicate_of_company_id",
+    "company_approval_status",
+    "reject_reason_code",
+    "blockers",
+    "researcher",
+    "verified_on",
+    "qa_reviewer",
+    "qa_reviewed_on",
+    "next_action"
+  ],
+  "properties": {
+    "company_id": { "type": ["string", "null"] },
+    "canonical_company_name": { "type": ["string", "null"] },
+    "operating_brand": { "type": ["string", "null"] },
+    "parent_company_id": { "type": ["string", "null"] },
+    "official_website": { "type": ["string", "null"] },
+    "canonical_domain": { "type": ["string", "null"] },
+    "country": { "type": ["string", "null"] },
+    "markets_served": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "company_business_model": { "type": ["string", "null"] },
+    "projects_fit": {
+      "type": "string",
+      "enum": ["YES", "NO", "REVIEW"]
+    },
+    "platform_fit": {
+      "type": "string",
+      "enum": ["YES", "NO", "REVIEW"]
+    },
+    "primary_track": {
+      "type": "string",
+      "enum": ["PROJECTS", "PLATFORM", "BOTH_PROJECTS_FIRST", "BOTH_PLATFORM_FIRST", "NONE", "UNASSIGNED"]
+    },
+    "projects_category": {
+      "type": ["string", "null"],
+      "enum": [
+        "Promoter / Live (6+ Events)",
+        "Publisher / Catalog Manager",
+        "Label / D2C Storefront",
+        "Other / Low Priority",
+        null
+      ]
+    },
+    "projects_priority": {
+      "type": ["string", "null"],
+      "enum": ["P1", "P2", "P3", null]
+    },
+    "platform_subtype": {
+      "type": ["string", "null"],
+      "enum": [
+        "Record Label",
+        "Artist Management",
+        "Boutique Distributor",
+        null
+      ]
+    },
+    "commercial_rank": {
+      "type": ["string", "null"],
+      "enum": ["A", "B", "C", null]
+    },
+    "live_event_count": { "type": ["integer", "null"] },
+    "live_count_window": { "type": ["string", "null"] },
+    "event_proof_log": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "event_name",
+          "event_date",
+          "city",
+          "promoter_proof_url",
+          "secondary_event_url",
+          "counted",
+          "reason_if_not_counted"
+        ],
+        "properties": {
+          "event_name": { "type": "string" },
+          "event_date": { "type": "string" },
+          "city": { "type": "string" },
+          "promoter_proof_url": { "type": "string" },
+          "secondary_event_url": { "type": ["string", "null"] },
+          "counted": { "type": "boolean" },
+          "reason_if_not_counted": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "music_rights_role": {
+      "type": ["string", "null"],
+      "enum": [
+        "OWNER",
+        "PUBLISHER",
+        "ADMINISTRATOR",
+        "CATALOG_MANAGER",
+        "MASTER_RIGHTS_MANAGER",
+        "UNCLEAR",
+        null
+      ]
+    },
+    "catalog_proof_url": { "type": ["string", "null"] },
+    "d2c_store_url": { "type": ["string", "null"] },
+    "d2c_product_url": { "type": ["string", "null"] },
+    "active_artist_count": { "type": ["integer", "null"] },
+    "artist_count_basis": { "type": "string" },
+    "roster_proof_url": { "type": ["string", "null"] },
+    "observed_facts": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "commercial_hypothesis": { "type": ["string", "null"] },
+    "buyer_interest": { "type": "string" },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "url",
+          "source_grade",
+          "fact_supported",
+          "source_date",
+          "checked_on"
+        ],
+        "properties": {
+          "url": { "type": "string" },
+          "source_grade": {
+            "type": "string",
+            "enum": ["A", "B", "C"]
+          },
+          "fact_supported": { "type": "string" },
+          "source_date": { "type": ["string", "null"] },
+          "checked_on": { "type": "string" }
+        }
+      }
+    },
+    "relationship_status": {
+      "type": "string",
+      "enum": [
+        "CLEAR",
+        "EXISTING_CLIENT_PARTNER",
+        "ACTIVE_DISCUSSION",
+        "PREVIOUSLY_CONTACTED",
+        "UNKNOWN_REVIEW",
+        "HOLD_CLIENT_DECISION"
+      ]
+    },
+    "relationship_check_reference": { "type": ["string", "null"] },
+    "relationship_cleared_by": { "type": ["string", "null"] },
+    "relationship_cleared_on": { "type": ["string", "null"] },
+    "duplicate_of_company_id": { "type": ["string", "null"] },
+    "company_approval_status": {
+      "type": "string",
+      "enum": [
+        "APPROVED_FOR_PERSON_RESEARCH",
+        "PENDING_QA",
+        "HOLD_RELATIONSHIP",
+        "MANUAL_REVIEW",
+        "REJECT",
+        "DUPLICATE_MERGED"
+      ]
+    },
+    "reject_reason_code": { "type": ["string", "null"] },
+    "blockers": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "researcher": { "type": ["string", "null"] },
+    "verified_on": { "type": ["string", "null"] },
+    "qa_reviewer": { "type": ["string", "null"] },
+    "qa_reviewed_on": { "type": ["string", "null"] },
+    "next_action": { "type": "string" }
+  }
+}

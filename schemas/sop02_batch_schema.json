@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SOP02_Batch_Response",
+  "description": "Batch response envelope for AI Decision-Maker Research (SOP 02 v4.0 Section 12.1)",
+  "type": "object",
+  "required": [
+    "task",
+    "run_date",
+    "approved_company_ids_received",
+    "input_blocked_company_ids",
+    "internal_contact_history_accessible",
+    "people",
+    "summary",
+    "batch_blockers",
+    "next_action"
+  ],
+  "properties": {
+    "task": { "type": "string" },
+    "run_date": { "type": "string" },
+    "approved_company_ids_received": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "input_blocked_company_ids": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "internal_contact_history_accessible": { "type": "boolean" },
+    "people": {
+      "type": "array",
+      "items": { "$ref": "sop02_person_schema.json" }
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "companies_accepted",
+        "unique_people_examined",
+        "persons_verified",
+        "linkedin_research_final",
+        "instagram_research_final",
+        "business_email_review_queue",
+        "research_holds",
+        "rejected_wrong_fit",
+        "duplicates"
+      ],
+      "properties": {
+        "companies_accepted": { "type": "integer" },
+        "unique_people_examined": { "type": "integer" },
+        "persons_verified": { "type": "integer" },
+        "linkedin_research_final": { "type": "integer" },
+        "instagram_research_final": { "type": "integer" },
+        "business_email_review_queue": { "type": "integer" },
+        "research_holds": { "type": "integer" },
+        "rejected_wrong_fit": { "type": "integer" },
+        "duplicates": { "type": "integer" }
+      }
+    },
+    "batch_blockers": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "next_action": { "type": "string" }
+  }
+}

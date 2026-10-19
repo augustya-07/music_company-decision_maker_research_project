@@ -1,0 +1,217 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SOP02_Person_Record",
+  "description": "Normalized record for AI Decision-Maker Research & Contact Verification (SOP 02 v4.0)",
+  "type": "object",
+  "required": [
+    "person_id",
+    "company_id",
+    "canonical_company_name",
+    "primary_track",
+    "projects_category",
+    "platform_subtype",
+    "full_name",
+    "exact_current_title",
+    "normalized_function",
+    "buyer_role",
+    "contact_rank",
+    "affiliation_type",
+    "current_employer_proof_url",
+    "current_role_proof_url",
+    "role_rationale",
+    "linkedin_url",
+    "linkedin_status",
+    "instagram_url",
+    "instagram_status",
+    "business_email",
+    "email_status",
+    "email_source",
+    "email_technical_validation_result",
+    "email_validation_checked_on",
+    "evidence",
+    "linkedin_score",
+    "instagram_score",
+    "person_fit_subscore",
+    "relationship_clearance",
+    "relationship_check_reference",
+    "person_research_status",
+    "research_dispositions",
+    "hold_reason_codes",
+    "researcher",
+    "research_checked_on",
+    "qa_reviewer",
+    "qa_reviewed_on",
+    "campaign_approval_status",
+    "approved_campaign_id",
+    "selected_deck_25",
+    "first_contact_channel",
+    "first_message_date",
+    "lead_status",
+    "last_contact_date",
+    "sender_account",
+    "existing_contact_history_reference",
+    "next_action"
+  ],
+  "properties": {
+    "person_id": { "type": ["string", "null"] },
+    "company_id": { "type": ["string", "null"] },
+    "canonical_company_name": { "type": ["string", "null"] },
+    "primary_track": { "type": ["string", "null"] },
+    "projects_category": { "type": ["string", "null"] },
+    "platform_subtype": { "type": ["string", "null"] },
+    "full_name": { "type": ["string", "null"] },
+    "exact_current_title": { "type": ["string", "null"] },
+    "normalized_function": { "type": ["string", "null"] },
+    "buyer_role": {
+      "type": ["string", "null"],
+      "enum": ["ECONOMIC", "FUNCTIONAL", "OPERATIONAL", "INFLUENCER", null]
+    },
+    "contact_rank": {
+      "type": ["string", "null"],
+      "enum": ["PRIMARY", "ALTERNATE", null]
+    },
+    "affiliation_type": { "type": ["string", "null"] },
+    "current_employer_proof_url": { "type": ["string", "null"] },
+    "current_role_proof_url": { "type": ["string", "null"] },
+    "role_rationale": { "type": ["string", "null"] },
+    "linkedin_url": { "type": ["string", "null"] },
+    "linkedin_status": {
+      "type": "string",
+      "enum": [
+        "VERIFIED_CURRENT",
+        "POSSIBLE_MATCH",
+        "NOT_FOUND",
+        "FORMER_EMPLOYEE",
+        "WRONG_PERSON",
+        "INACCESSIBLE",
+        "RECHECK_REQUIRED"
+      ]
+    },
+    "instagram_url": { "type": ["string", "null"] },
+    "instagram_status": {
+      "type": "string",
+      "enum": [
+        "VERIFIED_PROFESSIONAL",
+        "PRIVATE_NOT_APPROVED",
+        "UNVERIFIED_MATCH",
+        "NOT_FOUND",
+        "BRAND_ACCOUNT_ONLY",
+        "WRONG_PERSON",
+        "INACCESSIBLE",
+        "RECHECK_REQUIRED"
+      ]
+    },
+    "business_email": { "type": ["string", "null"] },
+    "email_status": {
+      "type": "string",
+      "enum": [
+        "VERIFIED_PROFESSIONAL",
+        "PUBLIC_NOT_TECHNICALLY_VERIFIED",
+        "ENRICHED_UNVERIFIED",
+        "ROLE_BASED_INBOX",
+        "RISKY_ACCEPT_ALL",
+        "INVALID",
+        "NOT_FOUND",
+        "SUPPRESSED"
+      ]
+    },
+    "email_source": { "type": ["string", "null"] },
+    "email_technical_validation_result": { "type": ["string", "null"] },
+    "email_validation_checked_on": { "type": ["string", "null"] },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "url",
+          "fact_supported",
+          "source_grade",
+          "source_date",
+          "checked_on"
+        ],
+        "properties": {
+          "url": { "type": "string" },
+          "fact_supported": { "type": "string" },
+          "source_grade": {
+            "type": "string",
+            "enum": ["A", "B", "C"]
+          },
+          "source_date": { "type": ["string", "null"] },
+          "checked_on": { "type": "string" }
+        }
+      }
+    },
+    "linkedin_score": { "type": ["integer", "number", "null"] },
+    "instagram_score": { "type": ["integer", "number", "null"] },
+    "person_fit_subscore": { "type": ["integer", "number", "null"] },
+    "relationship_clearance": {
+      "type": "string",
+      "enum": [
+        "CLEAR",
+        "EXISTING_CLIENT_RELATIONSHIP",
+        "PREVIOUSLY_CONTACTED",
+        "DECLINED_DO_NOT_CONTACT",
+        "ALREADY_OWNED",
+        "UNKNOWN_CONFLICT"
+      ]
+    },
+    "relationship_check_reference": { "type": ["string", "null"] },
+    "person_research_status": {
+      "type": "string",
+      "enum": [
+        "DISCOVERED",
+        "VERIFYING",
+        "RESEARCH_HOLD",
+        "PENDING_QA",
+        "VERIFIED",
+        "REJECTED",
+        "DUPLICATE_MERGED",
+        "INPUT_BLOCKED"
+      ]
+    },
+    "research_dispositions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "LINKEDIN_RESEARCH_FINAL",
+          "INSTAGRAM_RESEARCH_FINAL",
+          "BUSINESS_EMAIL_REVIEW_QUEUE",
+          "RESEARCH_HOLD",
+          "REJECT",
+          "DUPLICATE_MERGED",
+          "INPUT_BLOCKED"
+        ]
+      }
+    },
+    "hold_reason_codes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "researcher": { "type": ["string", "null"] },
+    "research_checked_on": { "type": ["string", "null"] },
+    "qa_reviewer": { "type": ["string", "null"] },
+    "qa_reviewed_on": { "type": ["string", "null"] },
+    "campaign_approval_status": { "type": "string" },
+    "approved_campaign_id": { "type": ["string", "null"] },
+    "selected_deck_25": { "type": "string" },
+    "first_contact_channel": { "type": ["string", "null"] },
+    "first_message_date": { "type": ["string", "null"] },
+    "lead_status": {
+      "type": ["string", "null"],
+      "enum": [
+        "Initial Contact",
+        "Got Email",
+        "Deck Sent",
+        "Call Scheduled",
+        "Pilot / Proposal",
+        "Nurture",
+        null
+      ]
+    },
+    "last_contact_date": { "type": ["string", "null"] },
+    "sender_account": { "type": ["string", "null"] },
+    "existing_contact_history_reference": { "type": ["string", "null"] },
+    "next_action": { "type": "string" }
+  }
+}

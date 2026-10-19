@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SOP01_Batch_Result",
+  "description": "Batch result envelope for AI Company Discovery (SOP 01 v4.0 Section 12.2)",
+  "type": "object",
+  "required": [
+    "task",
+    "run_date",
+    "scope",
+    "sources_accessible",
+    "internal_relationship_register_accessible",
+    "companies",
+    "summary",
+    "batch_blockers",
+    "next_action"
+  ],
+  "properties": {
+    "task": { "type": "string" },
+    "run_date": { "type": "string" },
+    "scope": {
+      "type": "object",
+      "required": ["track", "lane", "markets"],
+      "properties": {
+        "track": { "type": "string" },
+        "lane": { "type": "string" },
+        "markets": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "sources_accessible": { "type": "boolean" },
+    "internal_relationship_register_accessible": { "type": "boolean" },
+    "companies": {
+      "type": "array",
+      "items": { "$ref": "sop01_company_schema.json" }
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "raw_signals_reviewed",
+        "unique_companies_examined",
+        "approved",
+        "pending_qa",
+        "hold_relationship",
+        "manual_review",
+        "rejected",
+        "duplicates"
+      ],
+      "properties": {
+        "raw_signals_reviewed": { "type": "integer" },
+        "unique_companies_examined": { "type": "integer" },
+        "approved": { "type": "integer" },
+        "pending_qa": { "type": "integer" },
+        "hold_relationship": { "type": "integer" },
+        "manual_review": { "type": "integer" },
+        "rejected": { "type": "integer" },
+        "duplicates": { "type": "integer" }
+      }
+    },
+    "batch_blockers": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "next_action": { "type": "string" }
+  }
+}
